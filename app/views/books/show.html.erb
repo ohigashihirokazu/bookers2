@@ -1,0 +1,33 @@
+<%= render "layouts/errors", book: @book_new %>
+<div class="row">
+  <%= render "layouts/sidebar", {book: @book_new, user: @book.user} %>
+  <div class="col-xs-9">
+    <h2>Book detail</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">
+              <%= link_to attachment_image_tag(@book.user, :profile_image, size: "40x40", fallback: "no_image.jpg"), user_path(@book.user) %>
+              <br><%= link_to @book.user.name, user_path(@book.user) %></th>
+
+
+            <td><%= link_to @book.title, book_path(@book) %></td>
+            <td><%= @book.body %></td>
+            <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@book), class: "btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %></td>
+            <% end %>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

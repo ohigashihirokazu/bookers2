@@ -1,0 +1,38 @@
+<div class="col-xs-3">
+  <h2>User info</h2>
+  <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg" %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="row">
+    <%= link_to "Edit", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
+  </div>
+
+
+  <h2><strong><u>New book</u></strong></h2>
+
+
+  <%= form_for(book) do |f| %>
+  <div class="field row">
+    <h4><u>Title</h4></u>
+    <%= f.text_field :title, class: "col-xs-12", id: "inputTitle" %>
+  </div>
+  <div class="field row">
+    <h4><u>Option</h4></u>
+    <%= f.text_area :body, class: "col-xs-12", id: "inputBody" %>
+  </div>
+  <div class="row">
+    <h2><%= f.submit class: "btn btn-primary col-xs-12" %></h2>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,25 @@
+<%= render "layouts/errors", book: @book_new %>
+<div class="row">
+  <%= render "layouts/sidebar", {book: @book_new, user: current_user} %>
+  <div class="col-xs-9">
+    <h2>Users</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">image</th>
+          <th scope="col">name</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <th scope="row"><%= attachment_image_tag user, :profile_image, size: "40x40", fallback: "no_image.jpg" %></th>
+            <td><%= user.name %></td>
+            <td><%= link_to "Show", user_path(user.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
