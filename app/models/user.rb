@@ -7,8 +7,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  validates :email, presence: true
   validates :name, presence: true, length: { minimum: 2, maximum: 20}
   validates :introduction, {length: {maximum: 50}}
+
 
   def email_required?
     false
